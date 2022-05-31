@@ -58,7 +58,7 @@ public class BasketBuyController {
 			}
 
 		} else {
-			redirect.addFlashAttribute("error", "주문 채크 부탁드립니다.");
+			redirect.addFlashAttribute("error", "주문 체크 부탁드립니다.");
 
 			return "redirect:/basket";
 		}
@@ -143,7 +143,7 @@ public class BasketBuyController {
 				com.setInfo("수량이 없습니다.");
 			}else if(result.get(0).getItemqty() == 1){
 				int plus = basketBuyService.qtyupdate(result.get(0).getItemcode());
-				int plus1 = basketBuyService.qtyupdate(result.get(0).getItemcode());
+			
 			}else {
 				int plus = basketBuyService.qtyupdate(result.get(0).getItemcode());
 			}
@@ -157,7 +157,7 @@ public class BasketBuyController {
 				List<BasketVo> result = basketBuyService.basketbuyplus(vo.getKartnum());
 				
 				List<ItemQtyVo> itemqty1 = basketBuyService.itemqtyselect(basket.get(0).getItemcode());
-				if(itemqty1.get(0).getItemqty() == 0 ) { 
+				if(itemqty1.get(0).getItemqty() == itemqty1.get(0).getItemqty()-1 ) { 
 					List<BasketVo> result1 = basketBuyService.basketbuymius(vo.getKartnum());
 					List<BasketVo> basket1 = basketBuyService.basSelect(vo.getKartnum());
 					

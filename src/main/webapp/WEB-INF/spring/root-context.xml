@@ -6,17 +6,22 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 		
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="driverClass" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
-		<property name="user" value="tester"/>
-		<property name="password" value="1234"/>
-		
-		<property name="maxPoolSize" value="100"/>
-		<property name="maxIdleTime" value="600"/>
-		<property name="idleConnectionTestPeriod" value="300"/>
-
-		</bean>
+		<bean id ="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+			destroy-method="close">
+			<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@itthis.kr:1521:xe" />
+			<property name="user" value="hskim" />
+			<property name="password" value="1234" />
+			<!--위 설정파일 에서 Property 설명 
+				driverClass : JDBC 드라이버 클래스 지정 (DBMS에 따라 다름)
+				jdbcUrl : DB접속 경로 (DBMS애 따라 다름)
+				user : DB접속 계정
+				password : DB접속 계정의 비밀번호-->
+			<!--커넥션 풀에 관련된 설정-->
+			<property name="maxPoolSize" value="100" /><!--커넥션 풀 최대크기-->
+			<property name="maxIdleTime" value="600" /><!--사용되지 않는 커넥션 해제시간-->
+			<property name="idleConnectionTestPeriod" value="300" />
+			</bean>
 		<!-- 네이버 메일 설정 -->
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
